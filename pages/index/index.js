@@ -30,10 +30,23 @@ Page({
         })
     },
     userLogin() {
+        wx.showLoading({
+            title: '登陆中',
+        })
         userApi.login().then(() => {
+            wx.hideLoading({
+                success: (res) => { },
+            })
             console.log('登陆成功')
+            wx.showToast({
+                title: '登陆成功',
+                icon: "success"
+            })
             this.checkLogin()
         }).catch((error) => {
+            wx.hideLoading({
+                success: (res) => { },
+            })
             console.warn('登陆失败', error)
             wx.showToast({
                 title: '登陆失败',
