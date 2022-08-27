@@ -1,19 +1,24 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #aaa;
+/**app.wxss**/
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20rpx;
+    box-sizing: border-box;
+    padding-top: 20%;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.nickName {
+    text-align: center;
+    margin-top: 25rpx;
+    color: gray;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-.usermotto {
-  margin-top: 200px;
+.avatar {
+    width: 150rpx;
+    height: 150rpx;
+    border-radius: 20%;
 }
