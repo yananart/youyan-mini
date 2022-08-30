@@ -1,0 +1,9 @@
+<view class="container">
+    <view class="login-message">
+        <text>这是一段暂时没有意义的文字\n</text>
+        <text style="font-size: smaller;">Hello YouYan</text>
+    </view>
+    <view class="login-button">
+        <button type="primary" bindtap="register">点击授权登陆</button>
+    </view>
+</view>

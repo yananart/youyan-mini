@@ -1,6 +1,6 @@
 /**
  * 获取token
- * 
+ *
  * @returns {string} token
  */
 function getToken() {
@@ -10,8 +10,8 @@ function getToken() {
 
 /**
  * Get请求
- * 
- * @param {String} url 请求地址
+ *
+ * @param {string} url 请求地址
  * @param {Function} success 成功回调
  * @param {Function} fail 失败回调
  */
@@ -30,8 +30,8 @@ function get(url, success, fail) {
 
 /**
  * Post请求
- * 
- * @param {String} url 请求地址
+ *
+ * @param {string} url 请求地址
  * @param {JSON} data 请求数据
  * @param {Function} success 成功回调
  * @param {Function} fail 失败回调
@@ -52,8 +52,9 @@ function post(url, data, success, fail) {
 
 /**
  * Get请求 await
- * 
- * @param {String} url 请求地址
+ *
+ * @param {string} url 请求地址
+ * @returns {Promise<RequestSuccessCallbackResult<JSON>>} 响应结果
  */
 function getAwait(url) {
     return new Promise((resolve, reject) => {
@@ -69,9 +70,10 @@ function getAwait(url) {
 
 /**
  * Post请求 await
- * 
- * @param {String} url 请求地址
+ *
+ * @param {string} url 请求地址
  * @param {JSON} data 请求数据
+ * @returns {Promise<RequestSuccessCallbackResult<JSON>>} 响应结果
  */
 function postAwait(url, data) {
     return new Promise((resolve, reject) => {

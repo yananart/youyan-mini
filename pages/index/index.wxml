@@ -1,12 +1,6 @@
 <view class="container">
-    <block wx:if="{{!userIsLogin}}">
-        <button type="primary" bindtap="userLogin">点击用户登陆</button>
-    </block>
-    <block wx:else>
-        <image class="avatar" mode="cover" src="{{avatarUrl}}"></image>
-        <view class="nickName">
-            <text>{{nickName}}</text>
-        </view>
-        <button type="default" style="margin-top: 20rpx;" disabled>用户已登陆</button>
-    </block>
+    <image class="avatar" mode="cover" src="{{avatarUrl}}"></image>
+    <view class="nickName">
+        <text>{{nickName}}</text>
+    </view>
 </view>
