@@ -59,7 +59,11 @@ function post(url, data, success, fail) {
 function getAwait(url) {
     return new Promise((resolve, reject) => {
         get(url, (success) => {
-            resolve(success)
+            if (success.statusCode >= 500) {
+                reject(success)
+            } else {
+                resolve(success)
+            }
         }, (fail) => {
             console.warn('GET请求失败', fail)
             reject(fail)
@@ -78,7 +82,11 @@ function getAwait(url) {
 function postAwait(url, data) {
     return new Promise((resolve, reject) => {
         post(url, data, (success) => {
-            resolve(success)
+            if (success.statusCode >= 500) {
+                reject(success)
+            } else {
+                resolve(success)
+            }
         }, (fail) => {
             console.warn('POST请求失败', fail)
             reject(fail)

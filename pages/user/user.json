@@ -1,0 +1,10 @@
+{
+    "navigationStyle": "default",
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "我的",
+    "usingComponents": {
+        "mp-cells": "weui-miniprogram/cells/cells",
+        "mp-cell": "weui-miniprogram/cell/cell"
+    }
+}

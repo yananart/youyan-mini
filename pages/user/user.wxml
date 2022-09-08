@@ -1,0 +1,13 @@
+<view class="container">
+    <view class="userInfo">
+        <image class="avatar" mode="cover" src="{{user.avatarUrl}}"></image>
+        <view class="nickName">
+            <text>{{user.nickName}}</text>
+        </view>
+    </view>
+    <view class="setting" data-weui-theme="{{theme}}">
+        <mp-cells title="用户设置">
+            <mp-cell title="修改用户信息" link="true" hover="true" footer="修改" bindtap="toUserUpdae"></mp-cell>
+        </mp-cells>
+    </view>
+</view>

@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.userInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    box-sizing: border-box;
+    padding-left: 50rpx;
+    padding-top: 64rpx;
+    padding-bottom: 50rpx;
+    border-bottom-color: #f6f6f6;
+    border-bottom-width: 20rpx;
+    border-bottom-style: solid;
+}
+
+@media (prefers-color-scheme: dark) {
+    .userInfo {
+        border-bottom-color: black;
+    }
+}
+
+.avatar {
+    width: 128rpx;
+    height: 128rpx;
+    border-radius: 16rpx;
+}
+
+.nickName {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-left: 36rpx;
+    padding-top: 16rpx;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36rpx;
+}
+
+.setting {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    box-sizing: border-box;
+    /* padding-top: 5rpx; */
+    /* text-align: center; */
+}

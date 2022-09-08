@@ -3,7 +3,9 @@
         "pages/launch/launch",
         "pages/index/index",
         "pages/logs/logs",
-        "pages/login/login"
+        "pages/user/user",
+        "pages/login/login",
+        "pages/user-update/user-update"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -18,15 +20,21 @@
         "list": [
             {
                 "iconPath": "@homeIcon",
-                "selectedIconPath": "icons/home-s.png",
+                "selectedIconPath": "icons/select/home.png",
                 "text": "首页",
                 "pagePath": "pages/index/index"
             },
             {
                 "iconPath": "@logIcon",
-                "selectedIconPath": "icons/log-s.png",
+                "selectedIconPath": "icons/select/log.png",
                 "text": "日志",
                 "pagePath": "pages/logs/logs"
+            },
+            {
+                "iconPath": "@userIcon",
+                "selectedIconPath": "icons/select/user.png",
+                "text": "我的",
+                "pagePath": "pages/user/user"
             }
         ]
     },
@@ -34,5 +42,8 @@
     "themeLocation": "theme.json",
     "style": "v2",
     "sitemapLocation": "sitemap.json",
-    "usingComponents": {}
+    "usingComponents": {},
+    "useExtendedLib": {
+        "weui": true
+    }
 }

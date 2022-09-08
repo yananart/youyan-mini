@@ -1,0 +1,20 @@
+<view data-weui-theme="{{theme}}">
+    <mp-form-page title="修改用户信息">
+        <mp-form>
+            <view class="label-list">
+                <view class="label">昵称</view>
+                <view class="input-box">
+                    <input type="nickname" placeholder="请输入昵称" value="{{nickName}}" />
+                </view>
+            </view>
+        </mp-form>
+        <view slot="button">
+            <button type="primary" bindtap="">确定</button>
+        </view>
+        <view slot="footer">
+            <text>TODO\n</text>
+            <text>还没有做前后端交互\n</text>
+            <text>你仿佛来到了没有知识的荒原\n</text>
+        </view>
+    </mp-form-page>
+</view>

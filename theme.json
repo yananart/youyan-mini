@@ -2,15 +2,17 @@
     "light": {
         "navBgColor": "#f6f6f6",
         "navTxtStyle": "black",
-        "homeIcon": "icons/home.png",
-        "logIcon": "icons/log.png",
-        "tabTxtStyle": "#121212"
+        "tabTxtStyle": "#121212",
+        "homeIcon": "icons/common/home.png",
+        "logIcon": "icons/common/log.png",
+        "userIcon": "icons/common/user.png"
     },
     "dark": {
         "navBgColor": "#191919",
         "navTxtStyle": "white",
-        "homeIcon": "icons/home-w.png",
-        "logIcon": "icons/log-w.png",
-        "tabTxtStyle": "#ffffff"
+        "tabTxtStyle": "#ffffff",
+        "homeIcon": "icons/dark-mode/home.png",
+        "logIcon": "icons/dark-mode/log.png",
+        "userIcon": "icons/dark-mode/user.png"
     }
 }

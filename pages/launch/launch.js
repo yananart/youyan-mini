@@ -27,7 +27,10 @@ Page({
                     })
                 }
             } else {
-                getApp().globalData.userInfo = userInfoRes.data.data
+                let userInfo = userInfoRes.data.data
+                getApp().globalData.userInfo = userInfo
+                wx.setStorageSync('user.nickName', userInfo.nickName)
+                wx.setStorageSync('user.avatarUrl', userInfo.avatarUrl)
                 wx.hideLoading({})
                 wx.switchTab({
                     url: '/pages/index/index'
