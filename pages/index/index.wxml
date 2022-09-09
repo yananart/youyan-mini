@@ -1,3 +1,22 @@
+<view class="header">
+    <view class="title-time">
+        <text class="line1-text">{{year}}年</text>
+        <picker mode="date" fields="month" bindchange="selectMonth">
+            {{month}}月▼
+        </picker>
+    </view>
+    <view class="link-top" />
+    <view class="title-item">
+        <text class="line1-text">收入</text>
+        <text>800.00</text>
+    </view>
+    <view class="title-item">
+        <text class="line1-text">支出</text>
+        <text>1000.00</text>
+    </view>
+</view>
+
+
 <view class="container">
     <image class="avatar" mode="cover" src="{{avatarUrl}}"></image>
     <view class="nickName">

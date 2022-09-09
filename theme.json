@@ -8,7 +8,7 @@
         "userIcon": "icons/common/user.png"
     },
     "dark": {
-        "navBgColor": "#191919",
+        "navBgColor": "#000000",
         "navTxtStyle": "white",
         "tabTxtStyle": "#ffffff",
         "homeIcon": "icons/dark-mode/home.png",

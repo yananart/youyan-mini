@@ -1,4 +1,55 @@
-/**app.wxss**/
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    box-sizing: border-box;
+    padding: 20rpx 10rpx 20rpx 10rpx;
+    background-color: #f6f6f6;
+}
+
+@media (prefers-color-scheme: dark) {
+    .header {
+        background-color: #000000;
+    }
+}
+
+
+.title-item {
+    height: 100rpx;
+    width: 250rpx;
+    padding-left: 30rpx;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.title-time {
+    height: 100rpx;
+    width: 200rpx;
+    padding-left: 30rpx;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.title-item .line1-text {
+    font-size: small;
+}
+
+.link-top {
+    width: 1rpx;
+    height: 110rpx;
+    border-right: solid #ACC0D8 1rpx;
+}
+
+
 .container {
     /* height: 100%; */
     display: flex;
@@ -7,7 +58,7 @@
     justify-content: space-between;
     padding: 20rpx;
     box-sizing: border-box;
-    padding-top: 20%;
+    padding-top: 250rpx;
 }
 
 .nickName {
