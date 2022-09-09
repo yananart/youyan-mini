@@ -32,6 +32,13 @@ const userRegisterApi = apiHome + '/user/wechat/miniprogram/register'
 const userInfoApi = apiHome + '/user/info'
 
 /**
+ * 用户更新api
+ * 
+ * @type {String} url
+ */
+const userUpdateApi = apiHome + '/user/update'
+
+/**
  * 导出
  */
 export default {
@@ -39,6 +46,7 @@ export default {
         checkLogin: userCheckLoginApi,
         login: userLoginApi,
         register: userRegisterApi,
-        userInfo: userInfoApi
+        userInfo: userInfoApi,
+        update: userUpdateApi
     }
 }

@@ -50,3 +50,7 @@
     /* padding-top: 5rpx; */
     /* text-align: center; */
 }
+
+.setting .item {
+    font-size: smaller;
+}

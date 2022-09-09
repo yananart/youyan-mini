@@ -1,4 +1,4 @@
-import userUtil from '../../utils/user'
+import cacheUtil from '../../utils/cache'
 
 Page({
     data: {
@@ -22,7 +22,7 @@ Page({
 
     },
     onShow() {
-        let user = userUtil.getUserInfo()
+        let user = cacheUtil.getUserInfo()
         this.setData({
             user: user
         })

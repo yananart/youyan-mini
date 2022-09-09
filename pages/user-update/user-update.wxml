@@ -1,20 +1,22 @@
 <view data-weui-theme="{{theme}}">
     <mp-form-page title="修改用户信息">
-        <mp-form>
-            <view class="label-list">
-                <view class="label">昵称</view>
-                <view class="input-box">
-                    <input type="nickname" placeholder="请输入昵称" value="{{nickName}}" />
-                </view>
-            </view>
+        <!-- 警告栏 -->
+        <mp-toptips msg="{{errorMsg}}" type="error" show="{{errorMsg}}" />
+        <!-- 表单 -->
+        <mp-form id="form" rules="{{rules}}" models="{{form}}">
+            <mp-cells title="修改昵称">
+                <mp-cell title="昵称" prop="nickName" show-error>
+                    <input name="nickName" type="nickname" placeholder="请输入昵称" value="{{form.nickName}}" data-field="nickName" bindinput="handleInput" />
+                </mp-cell>
+            </mp-cells>
         </mp-form>
+        <!-- 确定按钮 -->
         <view slot="button">
-            <button type="primary" bindtap="">确定</button>
+            <button type="primary" bindtap="updateUser">确定</button>
         </view>
+        <!-- 尾部 -->
         <view slot="footer">
-            <text>TODO\n</text>
-            <text>还没有做前后端交互\n</text>
-            <text>你仿佛来到了没有知识的荒原\n</text>
+            <text>现在就昵称可以改\n其他再等等吧</text>
         </view>
     </mp-form-page>
 </view>

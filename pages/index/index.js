@@ -1,13 +1,15 @@
+import cacheUtil from '../../utils/cache'
+
 Page({
     data: {
         nickName: '',
         avatarUrl: ''
     },
-    onLoad() {
-        let app = getApp()
+    onShow() {
+        let userInfo = cacheUtil.getUserInfo()
         this.setData({
-            nickName: app.globalData.userInfo.nickName,
-            avatarUrl: app.globalData.userInfo.avatarUrl
+            nickName: userInfo.nickName,
+            avatarUrl: userInfo.avatarUrl
         })
     }
 })

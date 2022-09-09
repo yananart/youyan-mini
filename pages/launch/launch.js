@@ -1,4 +1,5 @@
 import userApi from '../../api/user'
+import cacheUtil from '../../utils/cache'
 
 Page({
     onShow: async function () {
@@ -28,9 +29,7 @@ Page({
                 }
             } else {
                 let userInfo = userInfoRes.data.data
-                getApp().globalData.userInfo = userInfo
-                wx.setStorageSync('user.nickName', userInfo.nickName)
-                wx.setStorageSync('user.avatarUrl', userInfo.avatarUrl)
+                cacheUtil.setUserInfo(userInfo)
                 wx.hideLoading({})
                 wx.switchTab({
                     url: '/pages/index/index'

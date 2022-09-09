@@ -1,4 +1,5 @@
 import requests from '../utils/requests'
+import cacheUtil from '../utils/cache'
 import api from '../common/youyanApi'
 
 
@@ -21,7 +22,7 @@ const login = () => new Promise((resolve, reject) => {
                         // 登陆后端成功
                         console.log('login success, token:', data.token)
                         // 存储token
-                        wx.setStorageSync('token', data.token)
+                        cacheUtil.setToken(data.token)
                         // 存储用户信息
                         const app = getApp()
                         app.globalData.userInfo = data.user
@@ -73,7 +74,7 @@ const register = () => new Promise((resolve, reject) => {
                             // 登陆后端成功
                             console.log('login success, token:', data.token)
                             // 存储token
-                            wx.setStorageSync('token', data.token)
+                            cacheUtil.setToken(data.token)
                             // 存储用户信息
                             const app = getApp()
                             app.globalData.userInfo = data.user
@@ -121,11 +122,25 @@ function userInfo() {
 
 
 /**
+ * 更新用户信息 昵称
+ *
+ * @param {String} nickName 用户昵称
+ * @returns {Promise<RequestSuccessCallbackResult<JSON>>} 响应结果
+ */
+function update(nickName) {
+    return requests.post(api.user.update, {
+        nickName: nickName
+    })
+}
+
+
+/**
  * 导出模块
  */
 export default {
     login: login,
     register: register,
     checkLogin: checkLogin,
-    userInfo: userInfo
+    userInfo: userInfo,
+    update: update
 }

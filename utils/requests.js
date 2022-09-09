@@ -1,10 +1,12 @@
+import cacheUtil from './cache'
+
 /**
  * 获取token
  *
  * @returns {string} token
  */
 function getToken() {
-    return 'Bearer ' + wx.getStorageSync('token')
+    return 'Bearer ' + cacheUtil.getToken()
 }
 
 
