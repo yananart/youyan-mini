@@ -10,6 +10,7 @@
     box-sizing: border-box;
     padding: 20rpx 10rpx 20rpx 10rpx;
     background-color: #f6f6f6;
+    height: 150rpx;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,25 +52,34 @@
 
 
 .container {
-    /* height: 100%; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 20rpx;
+    width: 100%;
     box-sizing: border-box;
-    padding-top: 250rpx;
+    padding-top: 150rpx;
 }
 
-.nickName {
-    text-align: center;
-    margin-top: 25rpx;
-    color: gray;
-    font-family: 'Courier New', Courier, monospace;
+
+.bill-list {
+    width: 100%;
 }
 
-.avatar {
-    width: 150rpx;
-    height: 150rpx;
-    border-radius: 20%;
+
+.bill-list .bill-item {
+    padding: 15rpx 30rpx 15rpx 30rpx;
+}
+
+
+.bill-item .bill-icon {
+    /* padding: 0 10rpx 0 0; */
+}
+
+
+.bill-item .bill-desc {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 30rpx;
 }

@@ -16,10 +16,38 @@
     </view>
 </view>
 
-
-<view class="container">
-    <image class="avatar" mode="cover" src="{{avatarUrl}}"></image>
-    <view class="nickName">
-        <text>{{nickName}}</text>
-    </view>
+<view class="container" data-weui-theme="{{theme}}">
+    <mp-cells title="账单标题" class="bill-list">
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+        <template is="bill-item" data="{{...bill}}" />
+    </mp-cells>
 </view>
+
+
+<template name="bill-item">
+    <mp-cell ext-class="bill-item">
+        <view slot="icon" class="bill-icon">
+            <text>{{icon}}</text>
+        </view>
+        <view class="bill-desc">
+            <text>{{desc}}</text>
+            <text style="font-size: small;color: gray;">#{{tag}}</text>
+        </view>
+        <view slot="footer">
+            <text>{{amount}}</text>
+        </view>
+    </mp-cell>
+</template>

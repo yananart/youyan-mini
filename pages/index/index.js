@@ -5,7 +5,27 @@ Page({
         nickName: '',
         avatarUrl: '',
         year: '2022',
-        month: '09'
+        month: '09',
+        theme: '',
+        bill: {
+            icon: '😂',
+            desc: '这里是账单说明',
+            tag: '标签',
+            amount: -14.50
+        }
+    },
+    onLoad() {
+        this.setData({
+            theme: wx.getSystemInfoSync().theme
+        })
+        wx.onThemeChange((result) => {
+            this.setData({
+                theme: result.theme
+            })
+        })
+    },
+    onUnload() {
+        wx.offThemeChange((result) => { })
     },
     onShow() {
         let userInfo = cacheUtil.getUserInfo()
