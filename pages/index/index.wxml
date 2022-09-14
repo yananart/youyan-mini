@@ -1,7 +1,7 @@
 <view class="header">
     <view class="title-time">
         <text class="line1-text">{{year}}年</text>
-        <picker mode="date" fields="month" bindchange="selectMonth">
+        <picker mode="date" fields="month" start="1949-01" end="2100-12" bindchange="selectMonth">
             {{month}}月▼
         </picker>
     </view>
@@ -17,24 +17,27 @@
 </view>
 
 <view class="container" data-weui-theme="{{theme}}">
-    <mp-cells title="账单标题" class="bill-list">
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-        <template is="bill-item" data="{{...bill}}" />
-    </mp-cells>
+    <block wx:for="{{data}}" wx:key="date">
+        <template is="bill-day" data="{{...item}}" />
+    </block>
 </view>
+
+
+<template name="bill-day">
+    <view class="bill-title">
+        <text>{{date}}</text>
+        <view>
+            <text wx:if="{{income>0}}">收入：{{income}}</text>
+            <text wx:if="{{income+outlay>0}}" class="bill-summary-split" />
+            <text wx:if="{{outlay>0}}">支出：{{outlay}}</text>
+        </view>
+    </view>
+    <mp-cells class="bill-list">
+        <block wx:for="{{detail}}" wx:key="id">
+            <template is="bill-item" data="{{...item}}" />
+        </block>
+    </mp-cells>
+</template>
 
 
 <template name="bill-item">

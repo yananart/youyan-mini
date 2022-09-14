@@ -62,9 +62,44 @@
 }
 
 
+.bill-title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 15rpx;
+    padding-left: 25rpx;
+    padding-right: 25rpx;
+    padding-right: 25rpx;
+    margin-bottom: 5rpx;
+    font-size: smaller;
+}
+
+
+.bill-title .bill-summary-split {
+    margin-left: 30rpx;
+}
+
+
 .bill-list {
     width: 100%;
 }
+
+
+/* 重写表单标题为空 */
+.bill-list .weui-cells__title {
+    margin: 0;
+}
+
+/* 重写表单标题为空 */
+.bill-list .weui-cells {
+    margin: 0;
+}
+
+
+
 
 
 .bill-list .bill-item {
