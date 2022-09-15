@@ -13,13 +13,15 @@ Page({
                         icon: '🥤',
                         desc: '碳酸饮料 快乐水',
                         tag: '商超',
-                        amount: '-5'
+                        type: 0,
+                        amount: 5
                     },
                     {
                         icon: '🍱',
                         desc: '中饭 食堂',
                         tag: '中餐',
-                        amount: '-15'
+                        type: 0,
+                        amount: 15
                     }
                 ]
             },
@@ -32,12 +34,14 @@ Page({
                         icon: '🍱',
                         desc: '晚饭 饿了么',
                         tag: '晚餐',
-                        amount: '-15'
-                    },{
+                        type: 0,
+                        amount: 15
+                    }, {
                         icon: '🍱',
                         desc: '中饭 食堂',
                         tag: '中餐',
-                        amount: '-15'
+                        type: 0,
+                        amount: 15
                     }
                 ]
             },
@@ -50,23 +54,27 @@ Page({
                         icon: '🧧',
                         desc: '微信红包',
                         tag: '微信',
-                        amount: '+100'
+                        type: 1,
+                        amount: 100
                     },
                     {
                         icon: '🍱',
                         desc: '晚饭 饿了么',
                         tag: '晚餐',
-                        amount: '-15'
-                    },{
+                        type: 0,
+                        amount: 15
+                    }, {
                         icon: '🥤',
                         desc: '碳酸饮料600ml',
                         tag: '商超',
-                        amount: '-3.5'
-                    },{
+                        type: 0,
+                        amount: 3.5
+                    }, {
                         icon: '🍱',
                         desc: '中饭 食堂',
                         tag: '中餐',
-                        amount: '-15'
+                        type: 0,
+                        amount: 15
                     }
                 ]
             },
@@ -79,58 +87,69 @@ Page({
                         icon: '❓',
                         desc: '测试输入',
                         tag: '测试',
-                        amount: '-100.01'
+                        type: 0,
+                        amount: 100.01
                     },
                     {
                         icon: '❓',
                         desc: '测试输入',
                         tag: '测试',
-                        amount: '-100.01'
-                    },{
+                        type: 0,
+                        amount: 100.01
+                    }, {
                         icon: '❓',
                         desc: '测试输入',
                         tag: '测试',
-                        amount: '-100.01'
-                    },{
+                        type: 0,
+                        amount: 100.01
+                    }, {
                         icon: '❓',
                         desc: '测试输入',
                         tag: '测试',
-                        amount: '-100.01'
-                    },{
+                        type: 0,
+                        amount: 100.01
+                    }, {
                         icon: '❓',
                         desc: '测试输入',
                         tag: '测试',
-                        amount: '-100.01'
-                    },{
+                        type: 0,
+                        amount: 100.01
+                    }, {
                         icon: '❓',
                         desc: '测试输入',
                         tag: '测试',
-                        amount: '-100.01'
-                    },{
+                        type: 0,
+                        amount: 100.01
+                    }, {
                         icon: '❓',
                         desc: '测试输入',
                         tag: '测试',
-                        amount: '-100.01'
-                    },{
+                        type: 0,
+                        amount: 100.01
+                    }, {
                         icon: '❓',
                         desc: '测试输入',
                         tag: '测试',
-                        amount: '-100.01'
-                    },{
+                        type: 0,
+                        amount: 100.01
+                    }, {
                         icon: '❓',
                         desc: '测试输入',
                         tag: '测试',
-                        amount: '-100.01'
-                    },{
+                        type: 0,
+                        amount: 100.01
+                    }, {
                         icon: '❓',
                         desc: '测试输入',
                         tag: '测试',
-                        amount: '-100.01'
-                    },{
+                        type: 0,
+                        amount: 100.01
+                    }, {
                         icon: '❓',
                         desc: '测试输入',
                         tag: '测试',
-                        amount: '-100.01'
+                        type: 0,
+                        amount: 100.01
                     }
                 ]
             }
@@ -158,6 +177,15 @@ Page({
         this.setData({
             year: year,
             month: month
+        })
+    },
+    toBillDetail(event) {
+        let billDetail = event.currentTarget.dataset.bill
+        wx.navigateTo({
+            url: '/pages/bill-detail/bill-detail',
+            success: function(res){
+                res.eventChannel.emit('billDetail', billDetail)
+            }
         })
     }
 })

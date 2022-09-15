@@ -5,7 +5,8 @@
         "pages/logs/logs",
         "pages/user/user",
         "pages/login/login",
-        "pages/user-update/user-update"
+        "pages/user-update/user-update",
+        "pages/bill-detail/bill-detail"
     ],
     "window": {
         "backgroundTextStyle": "light",

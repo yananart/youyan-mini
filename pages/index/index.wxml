@@ -34,14 +34,14 @@
     </view>
     <mp-cells class="bill-list">
         <block wx:for="{{detail}}" wx:key="id">
-            <template is="bill-item" data="{{...item}}" />
+            <template is="bill-item" data="{{...item, self: item}}" />
         </block>
     </mp-cells>
 </template>
 
 
 <template name="bill-item">
-    <mp-cell ext-class="bill-item">
+    <mp-cell ext-class="bill-item" hover="true" bindtap="toBillDetail" data-bill="{{self}}">
         <view slot="icon" class="bill-icon">
             <text>{{icon}}</text>
         </view>
@@ -50,6 +50,8 @@
             <text style="font-size: small;color: gray;">#{{tag}}</text>
         </view>
         <view slot="footer">
+            <text wx:if="{{type==0}}">-</text>
+            <text wx:else>+</text>
             <text>{{amount}}</text>
         </view>
     </mp-cell>

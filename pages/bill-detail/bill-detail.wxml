@@ -1,0 +1,16 @@
+<view>
+    <view>
+        <text>{{detail.icon}}</text>
+    </view>
+    <view>
+        <text style="color:gray;">#{{detail.tag}} </text>
+        <text>{{detail.desc}}</text>
+    </view>
+    <view>
+        <text wx:if="{{detail.tag==0}}">支出</text>
+        <text wx:else>收入</text>
+    </view>
+    <view>
+        <text>{{detail.amount}}</text>
+    </view>
+</view>
