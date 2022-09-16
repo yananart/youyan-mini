@@ -1,16 +1,21 @@
-// pages/bill-detail/bill-detail.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        theme: '',
+        dialog: false,
         detail: {
-            icon: '❓',
+            category: {
+                icon: '',
+                name: ''
+            },
             desc: '',
             tag: '',
             type: 0,
-            amount: 0.0
+            amount: 0.0,
+            date: ''
         }
     },
 
@@ -18,7 +23,14 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-        console.log('进入detail页面')
+        this.setData({
+            theme: wx.getSystemInfoSync().theme
+        })
+        wx.onThemeChange((result) => {
+            this.setData({
+                theme: result.theme
+            })
+        })
         const eventChannel = this.getOpenerEventChannel()
         eventChannel.on('billDetail', (data) => {
             this.setData({
@@ -52,7 +64,7 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload() {
-
+        wx.offThemeChange((result) => { })
     },
 
     /**
@@ -74,5 +86,31 @@ Page({
      */
     onShareAppMessage() {
 
+    },
+    clickDialog(event) {
+        this.setData({
+            dialog: false
+        })
+        if (event.detail.index == 1) {
+            console.log('点击确认');
+            wx.showToast({
+                title: '还没做呢',
+                icon: 'error'
+            })
+        }
+    },
+    onDialogClose() {
+        console.log('关闭');
+    },
+    doUpdate() {
+        wx.showToast({
+            title: '还没做呢',
+            icon: 'error'
+        })
+    },
+    doDelete() {
+        this.setData({
+            dialog: true
+        })
     }
 })

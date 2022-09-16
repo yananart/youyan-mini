@@ -1,1 +1,72 @@
-/* pages/bill-detail/bill-detail.wxss */
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #f6f6f6;
+    height: 300rpx;
+}
+
+.header .category {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+}
+
+.header .category-icon {
+    display: flex;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    font-size: 60rpx;
+}
+
+.header .category-name {
+    margin-top: 30rpx;
+}
+
+.body {
+    margin-top: 300rpx;
+}
+
+.bottom {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding-bottom: env(safe-area-inset-bottom);
+    padding-top: 20rpx;
+    z-index: 999;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #f6f6f6;
+}
+
+@media (prefers-color-scheme: dark) {
+    .header {
+        background-color: #000000;
+    }
+
+    .header .category-icon {
+        background-color: #181818;
+    }
+
+    .bottom {
+        background-color: #000000;
+    }
+}

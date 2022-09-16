@@ -22,10 +22,10 @@
     </block>
 </view>
 
-
+<wxs src="../../utils/capture.wxs" module="tools" />
 <template name="bill-day">
     <view class="bill-title">
-        <text>{{date}}</text>
+        <text>{{tools.subStr(date, 5, 10)}}</text>
         <view>
             <text wx:if="{{income>0}}">收入：{{income}}</text>
             <text wx:if="{{income+outlay>0}}" class="bill-summary-split" />
@@ -34,16 +34,16 @@
     </view>
     <mp-cells class="bill-list">
         <block wx:for="{{detail}}" wx:key="id">
-            <template is="bill-item" data="{{...item, self: item}}" />
+            <template is="bill-item" data="{{...item, self: item, date: date}}" />
         </block>
     </mp-cells>
 </template>
 
 
 <template name="bill-item">
-    <mp-cell ext-class="bill-item" hover="true" bindtap="toBillDetail" data-bill="{{self}}">
+    <mp-cell ext-class="bill-item" hover="true" bindtap="toBillDetail" data-bill="{{self}}" data-date="{{date}}">
         <view slot="icon" class="bill-icon">
-            <text>{{icon}}</text>
+            <text>{{category.icon}}</text>
         </view>
         <view class="bill-desc">
             <text>{{desc}}</text>

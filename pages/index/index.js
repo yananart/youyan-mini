@@ -5,151 +5,100 @@ Page({
         theme: '',
         data: [
             {
-                date: '09-14',
+                date: '2022-09-14',
                 income: 0,
                 outlay: 20,
                 detail: [
                     {
-                        icon: '🥤',
+                        category: {
+                            icon: '🥤',
+                            name: '饮料'
+                        },
                         desc: '碳酸饮料 快乐水',
                         tag: '商超',
                         type: 0,
                         amount: 5
                     },
                     {
-                        icon: '🍱',
+                        category: {
+                            icon: '🍱',
+                            name: '餐饮'
+                        },
                         desc: '中饭 食堂',
-                        tag: '中餐',
+                        tag: '午餐',
                         type: 0,
                         amount: 15
                     }
                 ]
             },
             {
-                date: '09-13',
+                date: '2022-09-13',
                 income: 0,
                 outlay: 30,
                 detail: [
                     {
-                        icon: '🍱',
+                        category: {
+                            icon: '🍱',
+                            name: '餐饮'
+                        },
                         desc: '晚饭 饿了么',
                         tag: '晚餐',
                         type: 0,
                         amount: 15
                     }, {
-                        icon: '🍱',
+                        category: {
+                            icon: '🍱',
+                            name: '餐饮'
+                        },
                         desc: '中饭 食堂',
-                        tag: '中餐',
+                        tag: '午餐',
                         type: 0,
                         amount: 15
                     }
                 ]
             },
             {
-                date: '09-12',
+                date: '2022-09-12',
                 income: 100,
                 outlay: 33.5,
                 detail: [
                     {
-                        icon: '🧧',
+                        category: {
+                            icon: '🧧',
+                            name: '红包'
+                        },
                         desc: '微信红包',
                         tag: '微信',
                         type: 1,
                         amount: 100
                     },
                     {
-                        icon: '🍱',
+                        category: {
+                            icon: '🍱',
+                            name: '餐饮'
+                        },
                         desc: '晚饭 饿了么',
                         tag: '晚餐',
                         type: 0,
                         amount: 15
                     }, {
-                        icon: '🥤',
+                        category: {
+                            icon: '🥤',
+                            name: '饮料'
+                        },
                         desc: '碳酸饮料600ml',
                         tag: '商超',
                         type: 0,
                         amount: 3.5
                     }, {
-                        icon: '🍱',
+                        category: {
+                            icon: '🍱',
+                            name: '餐饮'
+                        },
                         desc: '中饭 食堂',
-                        tag: '中餐',
+                        tag: '午餐',
                         type: 0,
                         amount: 15
-                    }
-                ]
-            },
-            {
-                date: '09-10',
-                income: 0,
-                outlay: 1234.56,
-                detail: [
-                    {
-                        icon: '❓',
-                        desc: '测试输入',
-                        tag: '测试',
-                        type: 0,
-                        amount: 100.01
-                    },
-                    {
-                        icon: '❓',
-                        desc: '测试输入',
-                        tag: '测试',
-                        type: 0,
-                        amount: 100.01
-                    }, {
-                        icon: '❓',
-                        desc: '测试输入',
-                        tag: '测试',
-                        type: 0,
-                        amount: 100.01
-                    }, {
-                        icon: '❓',
-                        desc: '测试输入',
-                        tag: '测试',
-                        type: 0,
-                        amount: 100.01
-                    }, {
-                        icon: '❓',
-                        desc: '测试输入',
-                        tag: '测试',
-                        type: 0,
-                        amount: 100.01
-                    }, {
-                        icon: '❓',
-                        desc: '测试输入',
-                        tag: '测试',
-                        type: 0,
-                        amount: 100.01
-                    }, {
-                        icon: '❓',
-                        desc: '测试输入',
-                        tag: '测试',
-                        type: 0,
-                        amount: 100.01
-                    }, {
-                        icon: '❓',
-                        desc: '测试输入',
-                        tag: '测试',
-                        type: 0,
-                        amount: 100.01
-                    }, {
-                        icon: '❓',
-                        desc: '测试输入',
-                        tag: '测试',
-                        type: 0,
-                        amount: 100.01
-                    }, {
-                        icon: '❓',
-                        desc: '测试输入',
-                        tag: '测试',
-                        type: 0,
-                        amount: 100.01
-                    }, {
-                        icon: '❓',
-                        desc: '测试输入',
-                        tag: '测试',
-                        type: 0,
-                        amount: 100.01
                     }
                 ]
             }
@@ -181,6 +130,8 @@ Page({
     },
     toBillDetail(event) {
         let billDetail = event.currentTarget.dataset.bill
+        let date = event.currentTarget.dataset.date
+        billDetail.date = date
         wx.navigateTo({
             url: '/pages/bill-detail/bill-detail',
             success: function(res){

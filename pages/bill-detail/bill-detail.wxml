@@ -1,16 +1,29 @@
-<view>
-    <view>
-        <text>{{detail.icon}}</text>
+<view class="header">
+    <view class="category">
+        <view class="category-icon">
+            <text>{{detail.category.icon}}</text>
+        </view>
+        <text class="category-name">{{detail.category.name}}</text>
     </view>
-    <view>
-        <text style="color:gray;">#{{detail.tag}} </text>
-        <text>{{detail.desc}}</text>
-    </view>
-    <view>
-        <text wx:if="{{detail.tag==0}}">支出</text>
-        <text wx:else>收入</text>
-    </view>
-    <view>
-        <text>{{detail.amount}}</text>
-    </view>
+</view>
+
+<view class="body" data-weui-theme="{{theme}}">
+    <mp-form>
+        <mp-cells>
+            <mp-cell title="类型">
+                <text wx:if="{{detail.type==0}}">支出</text>
+                <text wx:else>收入</text>
+            </mp-cell>
+            <mp-cell title="金额">{{detail.amount}}</mp-cell>
+            <mp-cell title="日期">{{detail.date}}</mp-cell>
+            <mp-cell title="标签">#{{detail.tag}}</mp-cell>
+            <mp-cell title="说明">{{detail.desc}}</mp-cell>
+        </mp-cells>
+    </mp-form>
+    <mp-dialog title="确认删除" mask mask-closable show="{{dialog}}" buttons="{{[{text:'取消'}, {text:'确认'}]}}" bindbuttontap="clickDialog" bindclose="onDialogClose"/>
+</view>
+
+<view class="bottom">
+    <button type="primary" bindtap="doUpdate">编辑</button>
+    <button type="warn" bindtap="doDelete">删除</button>
 </view>
