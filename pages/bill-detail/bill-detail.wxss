@@ -26,9 +26,11 @@
     width: 100rpx;
     height: 100rpx;
     border-radius: 100%;
-    justify-content: space-around;
+    justify-content: center;
+    justify-items: center;
     align-content: center;
     align-items: center;
+    text-align: center;
     background-color: #ffffff;
     font-size: 60rpx;
 }

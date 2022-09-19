@@ -98,10 +98,6 @@
     margin: 0;
 }
 
-
-
-
-
 .bill-list .bill-item {
     padding: 15rpx 30rpx 15rpx 30rpx;
 }
@@ -109,8 +105,23 @@
 
 .bill-item .bill-icon {
     /* padding: 0 10rpx 0 0; */
+    width: 60rpx;
+    height: 60rpx;
+    display: flex;
+    border-radius: 100%;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #f6f6f6;
 }
 
+@media (prefers-color-scheme: dark) {
+    .bill-item .bill-icon {
+        background-color: #000000;
+    }
+}
 
 .bill-item .bill-desc {
     display: flex;

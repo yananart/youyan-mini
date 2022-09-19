@@ -42,7 +42,8 @@
     "compileType": "miniprogram",
     "libVersion": "2.19.4",
     "appid": "wx26779f706502d7a2",
-    "projectname": "miniprogram-92",
+    "projectname": "youyan-mini",
+    "version": "0.0.11",
     "condition": {},
     "editorSetting": {
         "tabIndent": "insertSpaces",

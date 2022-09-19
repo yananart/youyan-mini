@@ -25,7 +25,7 @@
 <wxs src="../../utils/capture.wxs" module="tools" />
 <template name="bill-day">
     <view class="bill-title">
-        <text>{{tools.subStr(date, 5, 10)}}</text>
+        <text>{{tools.subStr(date, 5, 7)}}月{{tools.subStr(date, 8, 10)}}日</text>
         <view>
             <text wx:if="{{income>0}}">收入：{{income}}</text>
             <text wx:if="{{income+outlay>0}}" class="bill-summary-split" />

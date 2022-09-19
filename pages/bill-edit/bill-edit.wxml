@@ -1,0 +1,21 @@
+<view data-weui-theme="{{theme}}">
+
+</view>
+
+<view class="header">
+    <view class="bill-type">
+        <view class="item left {{select===0?'select':''}}" bindtap="selectOutlay">支出</view>
+        <view class="item right {{select===1?'select':''}}" bindtap="selectIncome">收入</view>
+    </view>
+</view>
+
+<view class="body">
+    <block wx:for="{{category[select]}}">
+        <view class="item">
+            <view class="category-icon">
+                <text>{{item.icon}}</text>
+            </view>
+            <text class="category-name">{{item.name}}</text>
+        </view>
+    </block>
+</view>
