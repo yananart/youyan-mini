@@ -2,6 +2,8 @@ Page({
     data: {
         theme: '',
         select: 0,
+        showEdit: false,
+        selectType: {},
         category: [
             [
                 {
@@ -29,7 +31,7 @@ Page({
                     icon: '🎮',
                     name: '游戏'
                 }
-            ],[
+            ], [
                 {
                     icon: '💵',
                     name: '工资'
@@ -41,6 +43,14 @@ Page({
                     name: '红包'
                 }
             ]
+        ],
+        buttons: [
+            {
+                type: 'primary',
+                className: '',
+                text: '完成',
+                value: 0
+            }
         ]
     },
     onLoad(options) {
@@ -100,5 +110,12 @@ Page({
     },
     selectIncome() {
         this.setData({ select: 1 })
+    },
+    selectIcon(event) {
+        const selectType = event.currentTarget.dataset.type;
+        this.setData({ 
+            selectType: selectType,
+            showEdit: true 
+        })
     }
 })

@@ -95,6 +95,14 @@
     margin-top: 5rpx;
 }
 
+.bill-editer {
+    padding: 20rpx;
+}
+
+.bill-editer .weui-half-screen-dialog__ft{
+    padding: 0;
+}
+
 @media (prefers-color-scheme: dark) {
     .header {
         background-color: #000000;

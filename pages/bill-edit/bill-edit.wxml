@@ -12,10 +12,16 @@
 <view class="body">
     <block wx:for="{{category[select]}}">
         <view class="item">
-            <view class="category-icon">
+            <view class="category-icon" bindtap="selectIcon" data-type="{{item}}">
                 <text>{{item.icon}}</text>
             </view>
             <text class="category-name">{{item.name}}</text>
         </view>
     </block>
 </view>
+
+<mp-half-screen-dialog extClass="bill-editer" closabled="{{false}}" show="{{showEdit}}" maskClosable>
+    <view slot="title">{{selectType.icon}}</view>
+    <view slot="desc">{{selectType.name}}</view>
+    <view slot="footer"></view>
+</mp-half-screen-dialog>
