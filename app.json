@@ -16,7 +16,7 @@
     },
     "tabBar": {
         "color": "@tabTxtStyle",
-        "selectedColor": "#111111",
+        "selectedColor": "#ABCDEF",
         "backgroundColor": "@navBgColor",
         "list": [
             {

@@ -20,8 +20,10 @@
     </block>
 </view>
 
-<mp-half-screen-dialog extClass="bill-editer" closabled="{{false}}" show="{{showEdit}}" maskClosable>
-    <view slot="title">{{selectType.icon}}</view>
-    <view slot="desc">{{selectType.name}}</view>
-    <view slot="footer"></view>
-</mp-half-screen-dialog>
+<view data-weui-theme="{{theme}}">
+    <mp-half-screen-dialog extClass="bill-editer" closabled="{{false}}" show="{{showEdit}}" maskClosable>
+        <view slot="title" style="font-size: 30rpx;">{{selectType.icon}} {{selectType.name}} 这里预留输入信息 前面说明 后面金额</view>
+        <view slot="desc" style="height: 300rpx;">这里预留键盘 仿照鲨鱼</view>
+        <view slot="footer"></view>
+    </mp-half-screen-dialog>
+</view>
