@@ -4,6 +4,7 @@ Page({
         select: 0,
         showEdit: false,
         selectType: {},
+        input: '',
         category: [
             [
                 {
@@ -44,13 +45,11 @@ Page({
                 }
             ]
         ],
-        buttons: [
-            {
-                type: 'primary',
-                className: '',
-                text: '完成',
-                value: 0
-            }
+        keyboardKeys: [
+            '7', '8', '9', '今天',
+            '4', '5', '6', '+',
+            '1', '2', '3', '-',
+            '.', '0', '←', '完成'
         ]
     },
     onLoad(options) {
@@ -113,9 +112,30 @@ Page({
     },
     selectIcon(event) {
         const selectType = event.currentTarget.dataset.type;
-        this.setData({ 
+        this.setData({
             selectType: selectType,
-            showEdit: true 
+            showEdit: true
+        })
+    },
+    hitKeyboard(event) {
+        const key = event.currentTarget.dataset.key;
+        let input = this.data.input;
+        if (key === this.data.keyboardKeys[14]) {
+            input = input.substr(0, input.length - 1)
+        } else {
+            input = input + key;
+        }
+        this.setData({
+            input: input
+        })
+    },
+    choseDay() {
+        console.log('选择日期');
+    },
+    finishEdit() {
+        wx.showToast({
+            title: '还没做提交',
+            icon: 'error'
         })
     }
 })

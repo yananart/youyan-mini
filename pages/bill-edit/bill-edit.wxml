@@ -22,8 +22,24 @@
 
 <view data-weui-theme="{{theme}}">
     <mp-half-screen-dialog extClass="bill-editer" closabled="{{false}}" show="{{showEdit}}" maskClosable>
-        <view slot="title" style="font-size: 30rpx;">{{selectType.icon}} {{selectType.name}} 这里预留输入信息 前面说明 后面金额</view>
-        <view slot="desc" style="height: 300rpx;">这里预留键盘 仿照鲨鱼</view>
+        <view slot="title" style="font-size: 30rpx;">{{input}}</view>
+        <view slot="desc" class="keyboard">
+            <block wx:for="{{keyboardKeys}}">
+                <block wx:if="{{index===3}}">
+                    <view class="key" hover-class="key-hover" hover-start-time="10" hover-stay-time="50">
+                        <picker class="picker" mode="date" start="1949-01-01" end="2100-12-31">
+                            <view class="picker-text">{{item}}</view>
+                        </picker>
+                    </view>
+                </block>
+                <block wx:elif="{{index===15}}">
+                    <view class="key" hover-class="key-hover" hover-start-time="10" hover-stay-time="50" bindtap="finishEdit">{{item}}</view>
+                </block>
+                <block wx:else>
+                    <view class="key" hover-class="key-hover" hover-start-time="10" hover-stay-time="50" bindtap="hitKeyboard" data-key="{{item}}">{{item}}</view>
+                </block>
+            </block>
+        </view>
         <view slot="footer"></view>
     </mp-half-screen-dialog>
 </view>
