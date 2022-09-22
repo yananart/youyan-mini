@@ -102,6 +102,20 @@
     background-color: var(--main-l2-color);
 }
 
+.bill-editer .input {
+    font-size: 40rpx;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bill-editer .input .describe {
+    font-size: 25rpx;
+}
+
 .bill-editer .keyboard {
     padding: 0 1rpx 1rpx 0;
     display: grid;
