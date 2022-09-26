@@ -3,43 +3,55 @@ Page({
         theme: '',
         select: 0,
         showEdit: false,
-        selectType: {},
+        selectCategory: 0,
         input: '0',
+        desc: '',
         category: [
             [
                 {
+                    id: 1,
                     icon: '🍱',
                     name: '餐饮'
                 }, {
+                    id: 2,
                     icon: '🥤',
                     name: '饮料'
                 }, {
+                    id: 3,
                     icon: '🛒',
                     name: '购物'
                 }, {
+                    id: 4,
                     icon: '🚌',
                     name: '交通'
                 }, {
+                    id: 5,
                     icon: '🤑',
                     name: '储蓄'
                 }, {
+                    id: 6,
                     icon: '🍎',
                     name: '水果'
                 }, {
+                    id: 7,
                     icon: '✈️',
                     name: '旅行'
                 }, {
+                    id: 8,
                     icon: '🎮',
                     name: '游戏'
                 }
             ], [
                 {
+                    id: 101,
                     icon: '💵',
                     name: '工资'
                 }, {
+                    id: 102,
                     icon: '💰',
                     name: '奖金'
                 }, {
+                    id: 103,
                     icon: '🧧',
                     name: '红包'
                 }
@@ -50,7 +62,9 @@ Page({
             '4', '5', '6', '+',
             '1', '2', '3', '-',
             '.', '0', '←', '完成'
-        ]
+        ],
+        showKeyboard: true,
+        bottom: 0
     },
     onLoad(options) {
         this.setData({
@@ -61,48 +75,25 @@ Page({
                 theme: result.theme
             })
         })
-    },
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
 
-    },
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-        wx.offThemeChange((result) => { })
-    },
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
+        const eventChannel = this.getOpenerEventChannel()
+        eventChannel.on('billEdit', (data) => {
+            const type = data.type
+            const amount = data.amount.toString()
+            const tag = data.tag
+            let desc = data.desc
+            const category = data.category.id
+            if (tag !== '') {
+                desc = '#' + tag + ' ' + desc
+            }
+            this.setData({
+                showEdit: true,
+                select: type,
+                selectCategory: category,
+                input: amount,
+                desc: desc
+            })
+        })
     },
     selectOutlay() {
         this.setData({ select: 0 })
@@ -111,9 +102,9 @@ Page({
         this.setData({ select: 1 })
     },
     selectIcon(event) {
-        const selectType = event.currentTarget.dataset.type;
+        const selectCategory = event.currentTarget.dataset.type;
         this.setData({
-            selectType: selectType,
+            selectCategory: selectCategory.id,
             showEdit: true
         })
     },
@@ -177,6 +168,7 @@ Page({
             } else {
                 input = input + key
             }
+            this.setData({ 'keyboardKeys[15]': '=' })
         } else {
             let last = this.getInputLastNumber()
             if (key === '0') {
@@ -216,20 +208,36 @@ Page({
     },
     finishEdit() {
         const amount = this.calculateInput()
-        if (amount === 0) {
-            wx.showToast({
-                title: '没有输入金额',
-                icon: 'error'
+        if (this.data.keyboardKeys[15] === '=') {
+            this.setData({
+                input: amount.toString(),
+                'keyboardKeys[15]': '完成'
             })
         } else {
-            wx.showToast({
-                title: '账单' + amount + '元',
-                icon: 'success'
-            })
-            this.setData({
-                showEdit: false,
-                input: '0'
-            })
+            if (amount === 0) {
+                wx.showModal({
+                    title: '没有输入金额',
+                    // content: '请输入大于0元的金额',
+                    showCancel: false
+                })
+            } else {
+                wx.showToast({
+                    title: '账单' + amount + '元',
+                    icon: 'success'
+                })
+                this.setData({
+                    showEdit: false,
+                    input: '0'
+                })
+            }
         }
+    },
+    inputFocus(event) {
+        let height = event.detail.height
+        if (height === this.data.bottom) return
+        this.setData({
+            showKeyboard: height === 0,
+            bottom: height
+        })
     }
 })

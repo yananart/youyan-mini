@@ -8,6 +8,7 @@ Page({
         dialog: false,
         detail: {
             category: {
+                id: 0,
                 icon: '',
                 name: ''
             },
@@ -106,6 +107,13 @@ Page({
         wx.showToast({
             title: '还没做呢',
             icon: 'error'
+        })
+        const detail = this.data.detail
+        wx.navigateTo({
+            url: '/pages/bill-edit/bill-edit',
+            success: function (res) {
+                res.eventChannel.emit('billEdit', detail)
+            }
         })
     },
     doDelete() {

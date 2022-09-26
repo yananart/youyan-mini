@@ -1,0 +1,3 @@
+<view class="body">
+    <button bindtap="toEdit" type="primary">打开账单编辑页面</button>
+</view>

@@ -11,6 +11,7 @@ Page({
                 detail: [
                     {
                         category: {
+                            id: 2,
                             icon: '🥤',
                             name: '饮料'
                         },
@@ -21,6 +22,7 @@ Page({
                     },
                     {
                         category: {
+                            id: 1,
                             icon: '🍱',
                             name: '餐饮'
                         },
@@ -38,6 +40,7 @@ Page({
                 detail: [
                     {
                         category: {
+                            id: 1,
                             icon: '🍱',
                             name: '餐饮'
                         },
@@ -47,6 +50,7 @@ Page({
                         amount: 15
                     }, {
                         category: {
+                            id: 1,
                             icon: '🍱',
                             name: '餐饮'
                         },
@@ -64,6 +68,7 @@ Page({
                 detail: [
                     {
                         category: {
+                            id: 103,
                             icon: '🧧',
                             name: '红包'
                         },
@@ -74,6 +79,7 @@ Page({
                     },
                     {
                         category: {
+                            id: 1,
                             icon: '🍱',
                             name: '餐饮'
                         },
@@ -83,6 +89,7 @@ Page({
                         amount: 15
                     }, {
                         category: {
+                            id: 2,
                             icon: '🥤',
                             name: '饮料'
                         },
@@ -92,6 +99,7 @@ Page({
                         amount: 3.5
                     }, {
                         category: {
+                            id: 1,
                             icon: '🍱',
                             name: '餐饮'
                         },

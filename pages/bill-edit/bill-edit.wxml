@@ -1,7 +1,3 @@
-<view data-weui-theme="{{theme}}">
-
-</view>
-
 <view class="header">
     <view class="bill-type">
         <view class="item left {{select===0?'select':''}}" bindtap="selectOutlay">支出</view>
@@ -12,7 +8,7 @@
 <view class="body">
     <block wx:for="{{category[select]}}" wx:key="index">
         <view class="item">
-            <view class="category-icon" bindtap="selectIcon" data-type="{{item}}">
+            <view class="category-icon {{selectCategory===item.id ? 'category-select' : ''}}" bindtap="selectIcon" data-type="{{item}}">
                 <text>{{item.icon}}</text>
             </view>
             <text class="category-name">{{item.name}}</text>
@@ -23,26 +19,36 @@
 <view data-weui-theme="{{theme}}">
     <mp-half-screen-dialog extClass="bill-editer" closabled="{{false}}" show="{{showEdit}}" maskClosable>
         <view slot="title" class="input">
-            <text class="describe">说明：还不能编辑</text>
-            <text>{{input}}</text>
+            <view class="amount">
+                <text>{{input}}</text>
+            </view>
+            <view class="describe">
+                <text>说明：</text>
+                <input adjust-position="{{false}}" class="editer" value="{{desc}}" placeholder="请输入说明" maxlength="{{30}}" bindkeyboardheightchange="inputFocus" confirm-type="done" />
+            </view>
         </view>
-        <view slot="desc" class="keyboard">
-            <block wx:for="{{keyboardKeys}}" wx:key="index">
-                <block wx:if="{{index===3}}">
-                    <view class="key" hover-class="key-hover" hover-start-time="10" hover-stay-time="50">
-                        <picker class="picker" mode="date" fields="day" start="1949-01-01" end="2100-12-31" bindchange="choseDay">
-                            <view class="picker-text">{{item}}</view>
-                        </picker>
-                    </view>
+        <block wx:if="{{showKeyboard}}">
+            <view slot="desc" class="keyboard">
+                <block wx:for="{{keyboardKeys}}" wx:key="index">
+                    <block wx:if="{{index===3}}">
+                        <view class="key" hover-class="key-hover" hover-start-time="10" hover-stay-time="50">
+                            <picker class="picker" mode="date" fields="day" start="1949-01-01" end="2100-12-31" bindchange="choseDay">
+                                <view class="picker-text">{{item}}</view>
+                            </picker>
+                        </view>
+                    </block>
+                    <block wx:elif="{{index===15}}">
+                        <view class="key finish" hover-class="finish-hover" hover-start-time="10" hover-stay-time="50" bindtap="finishEdit">{{item}}</view>
+                    </block>
+                    <block wx:else>
+                        <view class="key" hover-class="key-hover" hover-start-time="10" hover-stay-time="50" bindtap="hitKeyboard" data-key="{{item}}">{{item}}</view>
+                    </block>
                 </block>
-                <block wx:elif="{{index===15}}">
-                    <view class="key" hover-class="key-hover" hover-start-time="10" hover-stay-time="50" bindtap="finishEdit">{{item}}</view>
-                </block>
-                <block wx:else>
-                    <view class="key" hover-class="key-hover" hover-start-time="10" hover-stay-time="50" bindtap="hitKeyboard" data-key="{{item}}">{{item}}</view>
-                </block>
-            </block>
-        </view>
+            </view>
+        </block>
+        <block wx:else>
+            <view slot="desc" style="height: {{bottom}}px;"></view>
+        </block>
         <view slot="footer"></view>
     </mp-half-screen-dialog>
 </view>

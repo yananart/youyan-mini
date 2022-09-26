@@ -6,7 +6,8 @@
         "pages/login/login",
         "pages/user-update/user-update",
         "pages/bill-detail/bill-detail",
-        "pages/bill-edit/bill-edit"
+        "pages/bill-edit/bill-edit",
+        "pages/test/test"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -29,7 +30,7 @@
                 "iconPath": "@logIcon",
                 "selectedIconPath": "icons/select/log.png",
                 "text": "测试",
-                "pagePath": "pages/bill-edit/bill-edit"
+                "pagePath": "pages/test/test"
             },
             {
                 "iconPath": "@userIcon",

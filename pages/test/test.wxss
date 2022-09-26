@@ -1,0 +1,7 @@
+.body {
+    height: 1000rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
