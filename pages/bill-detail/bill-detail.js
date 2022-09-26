@@ -86,7 +86,11 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage() {
-
+        return {
+            title: '推荐使用有言记账',
+            path: '/pages/launch/launch',
+            // imageUrl: '/icons/common/icon.png'
+        }
     },
     clickDialog(event) {
         this.setData({

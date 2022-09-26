@@ -3,6 +3,8 @@ Page({
         year: '2022',
         month: '09',
         theme: '',
+        income: 800.00,
+        outlay: 1000.00,
         data: [
             {
                 date: '2022-09-14',
@@ -127,6 +129,14 @@ Page({
     },
     onShow() {
     },
+    onShareAppMessage() {
+        const message = this.data.month + '月，收入' + this.data.income + '元，支出' + this.data.outlay + '元'
+        return {
+            title: message,
+            path: '/pages/launch/launch',
+            // imageUrl: '/icons/common/icon.png'
+        }
+    },
     selectMonth(event) {
         let month = event.detail.value
         let year = month.substr(0, 4)
@@ -142,7 +152,7 @@ Page({
         billDetail.date = date
         wx.navigateTo({
             url: '/pages/bill-detail/bill-detail',
-            success: function(res){
+            success: function (res) {
                 res.eventChannel.emit('billDetail', billDetail)
             }
         })

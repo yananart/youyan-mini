@@ -1,3 +1,5 @@
+<wxs src="../../utils/capture.wxs" module="tools"/>
+
 <view class="header">
     <view class="title-time">
         <text class="line1-text">{{year}}年</text>
@@ -8,11 +10,11 @@
     <view class="link-top" />
     <view class="title-item">
         <text class="line1-text">收入</text>
-        <text>800.00</text>
+        <text>{{tools.numStr(income, 2)}}</text>
     </view>
     <view class="title-item">
         <text class="line1-text">支出</text>
-        <text>1000.00</text>
+        <text>{{tools.numStr(outlay, 2)}}</text>
     </view>
 </view>
 
@@ -22,7 +24,6 @@
     </block>
 </view>
 
-<wxs src="../../utils/capture.wxs" module="tools" />
 <template name="bill-day">
     <view class="bill-title">
         <text>{{tools.subStr(date, 5, 7)}}月{{tools.subStr(date, 8, 10)}}日</text>

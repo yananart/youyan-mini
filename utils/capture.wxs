@@ -13,6 +13,17 @@ function subStr(str, start, stop) {
 }
 
 
+/**
+ * 数字转换字符串
+ * @param number {number} 数字
+ * @param fractionDigits {number} 小数位数
+ */
+function numStr(number, fractionDigits) {
+    return number.toFixed(fractionDigits)
+}
+
+
 module.exports = {
-    subStr: subStr
+    subStr: subStr,
+    numStr: numStr
 }
