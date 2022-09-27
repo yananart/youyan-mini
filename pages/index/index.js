@@ -1,3 +1,5 @@
+import { getToday } from '../../utils/date'
+
 Page({
     data: {
         year: '2022',
@@ -122,6 +124,12 @@ Page({
             this.setData({
                 theme: result.theme
             })
+        })
+
+        let today = getToday()
+        this.setData({
+            year: today.substring(0, 4),
+            month: today.substring(5, 7)
         })
     },
     onUnload() {
