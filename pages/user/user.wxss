@@ -1,3 +1,5 @@
+@import '../../app.wxss';
+
 .container {
     display: flex;
     flex-direction: column;
@@ -14,15 +16,9 @@
     padding-left: 50rpx;
     padding-top: 64rpx;
     padding-bottom: 50rpx;
-    border-bottom-color: #f6f6f6;
+    border-bottom-color: var(--main-l2-color);
     border-bottom-width: 20rpx;
     border-bottom-style: solid;
-}
-
-@media (prefers-color-scheme: dark) {
-    .userInfo {
-        border-bottom-color: black;
-    }
 }
 
 .avatar {

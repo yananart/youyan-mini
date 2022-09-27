@@ -4,7 +4,7 @@
         "navTxtStyle": "black",
         "tabTxtStyle": "#121212",
         "homeIcon": "icons/common/home.png",
-        "logIcon": "icons/common/log.png",
+        "statisticsIcon": "icons/common/statistics.png",
         "userIcon": "icons/common/user.png"
     },
     "dark": {
@@ -12,7 +12,7 @@
         "navTxtStyle": "white",
         "tabTxtStyle": "#ffffff",
         "homeIcon": "icons/dark-mode/home.png",
-        "logIcon": "icons/dark-mode/log.png",
+        "statisticsIcon": "icons/dark-mode/statistics.png",
         "userIcon": "icons/dark-mode/user.png"
     }
 }

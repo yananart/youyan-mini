@@ -1,3 +1,5 @@
+@import '../../app.wxss';
+
 .header {
     position: fixed;
     width: 100%;
@@ -9,14 +11,8 @@
     align-content: center;
     box-sizing: border-box;
     padding: 20rpx 10rpx 20rpx 10rpx;
-    background-color: #f6f6f6;
+    background-color: var(--main-l2-color);
     height: 150rpx;
-}
-
-@media (prefers-color-scheme: dark) {
-    .header {
-        background-color: #000000;
-    }
 }
 
 
@@ -47,7 +43,7 @@
 .link-top {
     width: 1rpx;
     height: 110rpx;
-    border-right: solid #ACC0D8 1rpx;
+    border-right: solid var(--reverse-l2-color) 1rpx;
 }
 
 
@@ -114,14 +110,9 @@
     align-content: center;
     align-items: center;
     text-align: center;
-    background-color: #f6f6f6;
+    background-color: var(--main-l2-color);
 }
 
-@media (prefers-color-scheme: dark) {
-    .bill-item .bill-icon {
-        background-color: #000000;
-    }
-}
 
 .bill-item .bill-desc {
     display: flex;

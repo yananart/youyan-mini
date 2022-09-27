@@ -1,3 +1,5 @@
+@import '../../app.wxss';
+
 .header {
     position: fixed;
     width: 100%;
@@ -9,7 +11,7 @@
     align-content: center;
     align-items: center;
     box-sizing: border-box;
-    background-color: #f6f6f6;
+    background-color: var(--main-l2-color);
     height: 300rpx;
 }
 
@@ -31,7 +33,7 @@
     align-content: center;
     align-items: center;
     text-align: center;
-    background-color: #ffffff;
+    background-color: var(--main-l1-color);
     font-size: 60rpx;
 }
 
@@ -56,19 +58,5 @@
     align-content: center;
     align-items: center;
     box-sizing: border-box;
-    background-color: #f6f6f6;
-}
-
-@media (prefers-color-scheme: dark) {
-    .header {
-        background-color: #000000;
-    }
-
-    .header .category-icon {
-        background-color: #181818;
-    }
-
-    .bottom {
-        background-color: #000000;
-    }
+    background-color: var(--main-l2-color);
 }

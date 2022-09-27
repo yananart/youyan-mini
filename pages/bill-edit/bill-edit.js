@@ -1,4 +1,4 @@
-import { getToday } from '../../utils/data'
+import { getToday } from '../../utils/date'
 
 Page({
     data: {
@@ -83,7 +83,8 @@ Page({
         /** 系统键盘弹出时输入框与底部的距离 */
         bottom: 0
     },
-    onLoad(options) {
+    /** 页面加载 */
+    onLoad() {
         this.setData({
             theme: wx.getSystemInfoSync().theme,
             date: getToday()
@@ -146,9 +147,9 @@ Page({
         }
         return input
     },
-    /** 
+    /**
      * 计算输入
-     * @returns {number} 金额 
+     * @returns {number} 计算结果
      */
     calculateInput() {
         const input = this.data.input
@@ -164,9 +165,9 @@ Page({
             if (indexPlus >= 0) index = indexPlus
             else index = indexMinus
             const first = parseFloat(input.substring(0, index))
-            const sencond = parseFloat(input.substring(index + 1, length))
-            if (indexPlus >= 0) return parseFloat((first + sencond).toFixed(2))
-            else return Math.abs(parseFloat((first - sencond).toFixed(2)))
+            const second = parseFloat(input.substring(index + 1, length))
+            if (indexPlus >= 0) return parseFloat((first + second).toFixed(2))
+            else return Math.abs(parseFloat((first - second).toFixed(2)))
         }
         return parseFloat(input)
     },
@@ -176,7 +177,7 @@ Page({
         let input = this.data.input;
         if (key === this.data.keyboardKeys[14]) {
             // 删除
-            input = input.substr(0, input.length - 1)
+            input = input.substring(0, input.length - 1)
             if (input.length === 0) {
                 input = '0'
             }
@@ -191,7 +192,7 @@ Page({
             const indexPlus = input.indexOf('+')
             const indexMinus = input.indexOf('-')
             if (indexPlus >= 0 || indexMinus >= 0) {
-                if (indexPlus == lastAt || indexMinus == lastAt) return
+                if (indexPlus === lastAt || indexMinus === lastAt) return
                 input = this.calculateInput() + key
             } else {
                 input = input + key
@@ -273,6 +274,10 @@ Page({
             bottom: height
         })
     },
+    /**
+     * 设置日期 设置picker与输入框展示值
+     * @param {String} date 日期格式 YYYY-MM-DD
+     */
     setDate(date) {
         let today = getToday()
         let showDate = ''

@@ -5,8 +5,8 @@ page {
     --reverse-l1-color: #181818;
     --reverse-l2-color: #000000;
     --default-border-color: #d0d0d0;
-    --theme-color: #88baec;
-    --theme-select-color: #528ac2;
+    --theme-color: #07c160;
+    --theme-select-color: #1aad19;
 }
 
 @media (prefers-color-scheme: dark) {

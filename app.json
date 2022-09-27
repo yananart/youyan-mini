@@ -17,7 +17,7 @@
     },
     "tabBar": {
         "color": "@tabTxtStyle",
-        "selectedColor": "#ABCDEF",
+        "selectedColor": "#07c160",
         "backgroundColor": "@navBgColor",
         "list": [
             {
@@ -27,9 +27,9 @@
                 "pagePath": "pages/index/index"
             },
             {
-                "iconPath": "@logIcon",
-                "selectedIconPath": "icons/select/log.png",
-                "text": "测试",
+                "iconPath": "@statisticsIcon",
+                "selectedIconPath": "icons/select/statistics.png",
+                "text": "统计",
                 "pagePath": "pages/test/test"
             },
             {
