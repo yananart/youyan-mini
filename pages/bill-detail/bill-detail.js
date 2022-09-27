@@ -108,10 +108,6 @@ Page({
         console.log('关闭');
     },
     doUpdate() {
-        wx.showToast({
-            title: '还没做呢',
-            icon: 'error'
-        })
         const detail = this.data.detail
         wx.navigateTo({
             url: '/pages/bill-edit/bill-edit',

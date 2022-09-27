@@ -1,12 +1,24 @@
+import { getToday } from '../../utils/data'
+
 Page({
     data: {
-        theme: '',
-        select: 0,
-        showEdit: false,
-        selectCategory: 0,
+        /** 主题色 */
+        theme: 'light',
+        /** 用户选择 */
+        select: {
+            /** 选择类型 0-支出 1-收入 */
+            type: 0,
+            /** 选择的账单类别id */
+            categoryId: 0
+        },
+        /** 输入的金额 */
         input: '0',
+        /** 输入的描述 */
         desc: '',
-        category: [
+        /** 日期 */
+        date: '',
+        /** 账单类别list */
+        categoryList: [
             [
                 {
                     id: 1,
@@ -57,60 +69,68 @@ Page({
                 }
             ]
         ],
+        /** 键盘的按键 */
         keyboardKeys: [
             '7', '8', '9', '今天',
             '4', '5', '6', '+',
             '1', '2', '3', '-',
             '.', '0', '←', '完成'
         ],
+        /** 显示编辑框 */
+        showEdit: false,
+        /** 是否展示键盘 */
         showKeyboard: true,
+        /** 系统键盘弹出时输入框与底部的距离 */
         bottom: 0
     },
     onLoad(options) {
         this.setData({
-            theme: wx.getSystemInfoSync().theme
+            theme: wx.getSystemInfoSync().theme,
+            date: getToday()
         })
         wx.onThemeChange((result) => {
-            this.setData({
-                theme: result.theme
-            })
+            this.setData({ theme: result.theme })
         })
-
+        // 管道
         const eventChannel = this.getOpenerEventChannel()
         eventChannel.on('billEdit', (data) => {
+            // 由详情页面拉起的编辑 接收详情数据
             const type = data.type
             const amount = data.amount.toString()
             const tag = data.tag
             let desc = data.desc
-            const category = data.category.id
+            const categoryId = data.category.id
             if (tag !== '') {
                 desc = '#' + tag + ' ' + desc
             }
             this.setData({
                 showEdit: true,
-                select: type,
-                selectCategory: category,
+                'select.type': type,
+                'select.categoryId': categoryId,
                 input: amount,
                 desc: desc
             })
+            const date = data.date
+            this.setDate(date)
         })
     },
+    /** 选择支出类别 */
     selectOutlay() {
-        this.setData({ select: 0 })
+        this.setData({ 'select.type': 0 })
     },
+    /** 选择收入类别 */
     selectIncome() {
-        this.setData({ select: 1 })
+        this.setData({ 'select.type': 1 })
     },
-    selectIcon(event) {
+    /** 选择账单类别 */
+    selectCategory(event) {
         const selectCategory = event.currentTarget.dataset.type;
         this.setData({
             selectCategory: selectCategory.id,
             showEdit: true
         })
     },
-    /**
-     * 获取输入信息里面的最后一个数字
-     */
+    /** 获取输入信息里面的最后一个数字 */
     getInputLastNumber() {
         const input = this.data.input
         const length = input.length
@@ -126,6 +146,10 @@ Page({
         }
         return input
     },
+    /** 
+     * 计算输入
+     * @returns {number} 金额 
+     */
     calculateInput() {
         const input = this.data.input
         const length = input.length
@@ -146,19 +170,23 @@ Page({
         }
         return parseFloat(input)
     },
+    /** 点击键盘 */
     hitKeyboard(event) {
         const key = event.currentTarget.dataset.key;
         let input = this.data.input;
         if (key === this.data.keyboardKeys[14]) {
+            // 删除
             input = input.substr(0, input.length - 1)
             if (input.length === 0) {
                 input = '0'
             }
         } else if (key === '.') {
+            // 小数点
             let last = this.getInputLastNumber()
             if (last.indexOf('.') >= 0 || last.length === 0) return
             input = input + key
         } else if (key === '+' || key === '-') {
+            // 加减符号
             let lastAt = input.length - 1
             const indexPlus = input.indexOf('+')
             const indexMinus = input.indexOf('-')
@@ -168,8 +196,8 @@ Page({
             } else {
                 input = input + key
             }
-            this.setData({ 'keyboardKeys[15]': '=' })
         } else {
+            // 数字
             let last = this.getInputLastNumber()
             if (key === '0') {
                 let last = this.getInputLastNumber()
@@ -189,25 +217,28 @@ Page({
                 input = input + key
             }
         }
-
-        this.setData({
-            input: input
-        })
+        if (input.indexOf('+') >= 0 || input.indexOf('-') >= 0) {
+            this.setData({
+                'keyboardKeys[15]': '=',
+                input: input
+            })
+        } else {
+            this.setData({
+                'keyboardKeys[15]': '完成',
+                input: input
+            })
+        }
     },
+    /** 选择日期 */
     choseDay(event) {
         let date = event.detail.value
-        const now = new Date()
-        const today = now.getFullYear() + '/' + (now.getMonth() + 1).toString().padStart(2, '0') + '/' + now.getDate().toString().padStart(2, '0')
-        date = date.replace(/-/g, '/')
-        if (today === date) {
-            date = '今天'
-        }
-        this.setData({
-            'keyboardKeys[3]': date
-        })
+        this.setDate(date)
     },
+    /** 完成输入 */
     finishEdit() {
         const amount = this.calculateInput()
+        const desc = this.data.desc
+        const date = this.data.date
         if (this.data.keyboardKeys[15] === '=') {
             this.setData({
                 input: amount.toString(),
@@ -222,22 +253,34 @@ Page({
                 })
             } else {
                 wx.showToast({
-                    title: '账单' + amount + '元',
-                    icon: 'success'
+                    title: date + '：账单' + amount + '元，' + desc,
+                    icon: 'none'
                 })
                 this.setData({
                     showEdit: false,
+                    desc: '',
                     input: '0'
                 })
             }
         }
     },
+    /** 输入框获取焦点 */
     inputFocus(event) {
         let height = event.detail.height
         if (height === this.data.bottom) return
         this.setData({
             showKeyboard: height === 0,
             bottom: height
+        })
+    },
+    setDate(date) {
+        let today = getToday()
+        let showDate = ''
+        if (today === date) showDate = '今天'
+        else showDate = date.replace(/-/g, '/')
+        this.setData({
+            date: date,
+            'keyboardKeys[3]': showDate
         })
     }
 })

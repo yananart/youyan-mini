@@ -128,11 +128,12 @@
 .bill-editer .input .describe {
     margin-top: 10rpx;
     background-color: var(--main-l1-color);
-    border-radius: 5rpx;
+    border-radius: 10rpx;
     padding: 5rpx 20rpx 5rpx 20rpx;
     box-sizing: border-box;
     width: 100%;
     font-size: 30rpx;
+    font-weight: 350;
     display: flex;
     flex-direction: row;
     justify-content: baseline;

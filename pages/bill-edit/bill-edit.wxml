@@ -1,14 +1,14 @@
 <view class="header">
     <view class="bill-type">
-        <view class="item left {{select===0?'select':''}}" bindtap="selectOutlay">支出</view>
-        <view class="item right {{select===1?'select':''}}" bindtap="selectIncome">收入</view>
+        <view class="item left {{select.type===0?'select':''}}" bindtap="selectOutlay">支出</view>
+        <view class="item right {{select.type===1?'select':''}}" bindtap="selectIncome">收入</view>
     </view>
 </view>
 
 <view class="body">
-    <block wx:for="{{category[select]}}" wx:key="index">
+    <block wx:for="{{categoryList[select.type]}}" wx:key="index">
         <view class="item">
-            <view class="category-icon {{selectCategory===item.id ? 'category-select' : ''}}" bindtap="selectIcon" data-type="{{item}}">
+            <view class="category-icon {{select.categoryId===item.id?'category-select':''}}" bindtap="selectCategory" data-type="{{item}}">
                 <text>{{item.icon}}</text>
             </view>
             <text class="category-name">{{item.name}}</text>
@@ -24,7 +24,7 @@
             </view>
             <view class="describe">
                 <text>说明：</text>
-                <input adjust-position="{{false}}" class="editer" value="{{desc}}" placeholder="请输入说明" maxlength="{{30}}" bindkeyboardheightchange="inputFocus" confirm-type="done" />
+                <input adjust-position="{{false}}" class="editer" model:value="{{desc}}" placeholder="请输入说明" maxlength="{{30}}" bindkeyboardheightchange="inputFocus" confirm-type="done" />
             </view>
         </view>
         <block wx:if="{{showKeyboard}}">
@@ -32,7 +32,7 @@
                 <block wx:for="{{keyboardKeys}}" wx:key="index">
                     <block wx:if="{{index===3}}">
                         <view class="key" hover-class="key-hover" hover-start-time="10" hover-stay-time="50">
-                            <picker class="picker" mode="date" fields="day" start="1949-01-01" end="2100-12-31" bindchange="choseDay">
+                            <picker class="picker" value="{{date}}" mode="date" fields="day" start="1949-01-01" end="2100-12-31" bindchange="choseDay">
                                 <view class="picker-text">{{item}}</view>
                             </picker>
                         </view>
