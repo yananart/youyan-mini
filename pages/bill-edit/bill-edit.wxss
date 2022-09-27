@@ -32,6 +32,7 @@
     border-width: 2rpx;
     border-style: solid;
     border-color: var(--reverse-l2-color);
+    padding: 5rpx 0 5rpx 0;
 }
 
 .header .bill-type .left {
@@ -86,8 +87,6 @@
     height: 100rpx;
     border-radius: 100%;
     justify-content: center;
-    justify-items: center;
-    align-content: center;
     align-items: center;
     text-align: center;
     background-color: var(--main-l2-color);
@@ -99,6 +98,8 @@
 }
 
 .item .category-name {
+    font-size: 27rpx;
+    font-weight: 350;
     margin-top: 5rpx;
 }
 
