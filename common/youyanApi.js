@@ -39,6 +39,13 @@ const userInfoApi = apiHome + '/user/info'
 const userUpdateApi = apiHome + '/user/update'
 
 /**
+ * 种类类别api
+ * 
+ * @type {String} url
+ */
+const categoryTypeApi = apiHome + '/category/type'
+
+/**
  * 导出
  */
 export default {
@@ -48,5 +55,8 @@ export default {
         register: userRegisterApi,
         userInfo: userInfoApi,
         update: userUpdateApi
+    },
+    categoty: {
+        type: categoryTypeApi
     }
 }

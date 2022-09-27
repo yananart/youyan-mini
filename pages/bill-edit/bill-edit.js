@@ -1,4 +1,5 @@
 import { getToday } from '../../utils/date'
+import { getCategoryType } from '../../api/category'
 
 Page({
     data: {
@@ -18,57 +19,7 @@ Page({
         /** 日期 */
         date: '',
         /** 账单类别list */
-        categoryList: [
-            [
-                {
-                    id: 1,
-                    icon: '🍱',
-                    name: '餐饮'
-                }, {
-                    id: 2,
-                    icon: '🥤',
-                    name: '饮料'
-                }, {
-                    id: 3,
-                    icon: '🛒',
-                    name: '购物'
-                }, {
-                    id: 4,
-                    icon: '🚌',
-                    name: '交通'
-                }, {
-                    id: 5,
-                    icon: '🤑',
-                    name: '储蓄'
-                }, {
-                    id: 6,
-                    icon: '🍎',
-                    name: '水果'
-                }, {
-                    id: 7,
-                    icon: '✈️',
-                    name: '旅行'
-                }, {
-                    id: 8,
-                    icon: '🎮',
-                    name: '游戏'
-                }
-            ], [
-                {
-                    id: 101,
-                    icon: '💵',
-                    name: '工资'
-                }, {
-                    id: 102,
-                    icon: '💰',
-                    name: '奖金'
-                }, {
-                    id: 103,
-                    icon: '🧧',
-                    name: '红包'
-                }
-            ]
-        ],
+        categoryList: [[], []],
         /** 键盘的按键 */
         keyboardKeys: [
             '7', '8', '9', '今天',
@@ -84,7 +35,7 @@ Page({
         bottom: 0
     },
     /** 页面加载 */
-    onLoad() {
+    onLoad: async function () {
         this.setData({
             theme: wx.getSystemInfoSync().theme,
             date: getToday()
@@ -114,6 +65,22 @@ Page({
             const date = data.date
             this.setDate(date)
         })
+        try {
+            wx.showLoading({
+                title: '加载数据中',
+            })
+            // 请求后台数据
+            const categoryRes = await getCategoryType()
+            const data = categoryRes.data.data
+            this.setData({ categoryList: [data.outlay, data.income] })
+            wx.hideLoading({})
+        } catch (e) {
+            wx.hideLoading({})
+            wx.showToast({
+                title: '服务器异常',
+                icon: 'error'
+            })
+        }
     },
     /** 选择支出类别 */
     selectOutlay() {
@@ -127,7 +94,7 @@ Page({
     selectCategory(event) {
         const selectCategory = event.currentTarget.dataset.type;
         this.setData({
-            selectCategory: selectCategory.id,
+            'select.categoryId': selectCategory.id,
             showEdit: true
         })
     },

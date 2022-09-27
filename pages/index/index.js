@@ -72,7 +72,7 @@ Page({
                 detail: [
                     {
                         category: {
-                            id: 103,
+                            id: 31,
                             icon: '🧧',
                             name: '红包'
                         },
